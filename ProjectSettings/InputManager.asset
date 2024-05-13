@@ -333,10 +333,10 @@ InputManager:
     positiveButton: r
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 0
+    gravity: 1000
     dead: 0
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1000
+    snap: 1
     invert: 0
     type: 0
     axis: 0
