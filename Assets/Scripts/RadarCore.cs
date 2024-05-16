@@ -5,7 +5,7 @@ public abstract class RadarCore : MonoBehaviour {
   public List<GameObject> contacts = new List<GameObject>();
   public bool breached { get; protected set; }
 
-  public string targetTag;
+  public string[] targetTags;
   public enum TagMode { Free, Exclude, Include };
   public TagMode tagMode;
 
@@ -22,8 +22,20 @@ public abstract class RadarCore : MonoBehaviour {
     }
   }
 
+  public bool CheckTag ( string alpha ) {
+    for ( int i = 0; i < targetTags.Length; i++ ) {
+      if ( tagMode == TagMode.Free || 
+        ( tagMode == TagMode.Exclude && alpha != targetTags[i] ) || 
+        ( tagMode == TagMode.Include && alpha == targetTags[i] ) ) {
+        return true;
+      }
+      return false;
+    }
+    return true;
+  }
+
   public void AddContact ( GameObject contact ) {
-    if ( tagMode == TagMode.Free || ( tagMode == TagMode.Exclude && contact.tag != targetTag ) || ( tagMode == TagMode.Include && contact.tag == targetTag ) ) {
+    if ( CheckTag ( contact.tag ) ) {
       if ( !contacts.Contains ( contact ) ) {
         breached = true;
         contacts.Add ( contact );
