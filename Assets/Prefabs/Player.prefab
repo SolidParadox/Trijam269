@@ -146,7 +146,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -565,6 +565,7 @@ MonoBehaviour:
   angle: 45
   rays: 30
   distance: 20
+  baseLightPower: 5
   contactFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -702,7 +703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f2a4ce90ff0094883f8d9da891d782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   visualRig: {fileID: 8602131468523535753}
   deathRadar: {fileID: 7445251451134124390}
 --- !u!1 &6188145568138959214

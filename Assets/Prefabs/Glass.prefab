@@ -92,8 +92,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inLight: 0
-  delayTimer: 5
   transparent: 1
+  lightLevel: 0
+  threshold: 1.5
+  maxCapacity: 2
+  DEBUGSWITCH: 0
 --- !u!1 &2019377624054124086
 GameObject:
   m_ObjectHideFlags: 0

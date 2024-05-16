@@ -394,8 +394,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inLight: 0
-  delayTimer: 0.25
   transparent: 1
+  lightLevel: 0
+  threshold: 0.25
+  maxCapacity: 1
+  DEBUGSWITCH: 0
 --- !u!60 &7610947154930063
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -1,34 +1,38 @@
 using UnityEngine;
 
-public class LightSensor : MonoBehaviour
-{
-    public bool inLight = false;
-    public float delayTimer;
-    private float deltaT = 0;
+public class LightSensor : MonoBehaviour {
+  public bool inLight = false;
+  public bool transparent;      // PART OF ANOTHER SYSTEM : LightZone
 
-    public bool transparent;
+  public float lightLevel;
+  public float threshold;
+  public float maxCapacity;
 
-    private void Update()
-    {
-        if ( deltaT > 0 )
-        {
-            deltaT -= Time.deltaTime;
-            if ( deltaT <= 0 )
-            {
-                inLight = false;
-            }
-        }
-    }
+  public bool DEBUGSWITCH;
 
-    public void InLightPing ()
-    {
-        inLight = true;
-        deltaT = delayTimer;
+  private void Start () {
+    lightLevel = 0;
+  }
+
+  private void Update () {
+    if ( lightLevel > 0 ) {
+      lightLevel -= Time.deltaTime;
+      if ( lightLevel < 0 ) {
+        lightLevel = 0;
+      }
     }
-    public float GetRelativeBrightness ()
-    {
-        if (delayTimer == 0) return 0;
-        if ( !inLight) return 0;
-        return deltaT / delayTimer;
+    inLight = lightLevel >= threshold;
+  }
+
+  public void InLightPing ( float power ) {
+    if ( DEBUGSWITCH ) Debug.Log ( Time.deltaTime + " " + power );
+    lightLevel += power;
+    if ( lightLevel > maxCapacity ) {
+      lightLevel = maxCapacity;
     }
+  }
+
+  public float GetRelativeBrightness () {
+    return Mathf.Min ( 1, lightLevel / threshold );
+  }
 }

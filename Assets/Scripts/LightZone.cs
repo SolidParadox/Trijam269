@@ -1,100 +1,93 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
-public class LightZone : MonoBehaviour
-{
-    public float angle;
-    public int rays;
+public class LightZone : MonoBehaviour {
+  public float angle;
+  public int rays;
 
-    public float distance;
+  public float distance;
+  public float baseLightPower;
 
-    public ContactFilter2D contactFilter;
+  public ContactFilter2D contactFilter;
 
-    public MeshFilter mf;
-    private Mesh mesh;
+  public MeshFilter mf;
+  private Mesh mesh;
 
-    private Vector3[] vertices; // Vertices of the mesh
-    private int[] triangles; // Triangles of the mesh
-    private int vertexIndex = 0; // Current vertex index
+  private Vector3[] vertices; // Vertices of the mesh
+  private int[] triangles; // Triangles of the mesh
+  private int vertexIndex = 0; // Current vertex index
 
-    private LightSensor deltaLS;
+  private LightSensor deltaLS;
 
-    private void Start()
-    {
-        mesh = new Mesh();
-        mf.mesh = mesh;
-        mf.transform.position = Vector3.zero;
-    }
+  private void Start () {
+    mesh = new Mesh ();
+    mf.mesh = mesh;
+    mf.transform.position = Vector3.zero;
+  }
 
-    void FixedUpdate()
-    {
-        if (rays == 0) { return; }
+  void FixedUpdate () {
+    if ( rays == 0 ) { return; }
 
-        Vector2 heading = Quaternion.Euler(0, 0, -angle / 2) * transform.up;
-        Quaternion headingDelta = Quaternion.Euler(0, 0, angle / rays);
-        int deltaHC = 0;
-        RaycastHit2D[] results = new RaycastHit2D[16];
+    Vector2 heading = Quaternion.Euler(0, 0, -angle / 2) * transform.up;
+    Quaternion headingDelta = Quaternion.Euler(0, 0, angle / rays);
+    int deltaHC = 0;
+    RaycastHit2D[] results = new RaycastHit2D[16];
 
-        vertices = new Vector3[rays + 1];
-        triangles = new int[(rays - 1) * 3];
-        vertices[0] = transform.position;
-        vertexIndex = 1;
+    vertices = new Vector3[rays + 1];
+    triangles = new int[( rays - 1 ) * 3];
+    vertices[0] = transform.position;
+    vertexIndex = 1;
 
-        float fpd;
+    float fpd;
+    List<Collider2D> touched = new List<Collider2D> ();
 
-        for (int i = 0; i < rays; i++)
-        {
-            deltaHC = Physics2D.Raycast(transform.position, heading, contactFilter, results);
-            Debug.DrawLine(transform.position, transform.position + (Vector3)heading * 10, Color.cyan);
+    for ( int i = 0; i < rays; i++ ) {
+      deltaHC = Physics2D.Raycast ( transform.position, heading, contactFilter, results );
+      Debug.DrawLine ( transform.position, transform.position + (Vector3) heading * 10, Color.cyan );
 
-            fpd = distance;
+      fpd = distance;
 
-            if (deltaHC != 0)
-            {
+      if ( deltaHC != 0 ) {
 
-                for (int j = 0; j < deltaHC; j++)
-                {
-                    if (results[j].collider.TryGetComponent(out deltaLS) && deltaLS.transparent )
-                    {
-                        continue;
-                    }
-                    if (results[j].distance < fpd)
-                    {
-                        fpd = results[j].distance;
-                    }
-                }
-                for (int j = 0; j < deltaHC; j++)
-                {
-                    if (results[j].distance <= fpd)
-                    {
-                        if (results[j].collider.GetComponent<LightSensor>() != null)
-                        {
-                            results[j].collider.GetComponent<LightSensor>().InLightPing();
-                        }
-                        Debug.DrawLine(transform.position, results[j].point, Color.red);
-                        Debug.DrawLine(results[j].point, results[j].point + new Vector2(0, 0.2f), Color.green);
-                    }
-                }
-            }
-
-
-            vertices[vertexIndex] = heading * fpd + (Vector2)transform.position;
-            if (vertexIndex >= 2)
-            {
-                triangles[(vertexIndex - 2) * 3] = 0;
-                triangles[(vertexIndex - 2) * 3 + 1] = vertexIndex - 1;
-                triangles[(vertexIndex - 2) * 3 + 2] = vertexIndex;
-            }
-            vertexIndex++;
-
-            heading = headingDelta * heading;
+        for ( int j = 0; j < deltaHC; j++ ) {
+          if ( results[j].collider.TryGetComponent ( out deltaLS ) && deltaLS.transparent ) {
+            continue;
+          }
+          if ( results[j].distance < fpd ) {
+            fpd = results[j].distance;
+          }
         }
+        for ( int j = 0; j < deltaHC; j++ ) {
+          if ( results[j].distance <= fpd ) {
+            if ( results[j].collider.GetComponent<LightSensor> () != null && !touched.Contains ( results[j].collider ) ) {
+              results[j].collider.GetComponent<LightSensor> ().InLightPing ( Time.fixedDeltaTime * baseLightPower * ( 1 - results[j].distance / distance ) );
+              touched.Add ( results[j].collider );
+            }
+            Debug.DrawLine ( transform.position, results[j].point, Color.red );
+            Debug.DrawLine ( results[j].point, results[j].point + new Vector2 ( 0, 0.2f ), Color.green );
+          }
+        }
+      }
 
-        // Update the mesh with new vertices and triangles
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
 
-        // Recalculate normals and bounds
-        mesh.RecalculateNormals();
-        mesh.RecalculateBounds();
+      vertices[vertexIndex] = heading * fpd + (Vector2) transform.position;
+      if ( vertexIndex >= 2 ) {
+        triangles[( vertexIndex - 2 ) * 3] = 0;
+        triangles[( vertexIndex - 2 ) * 3 + 1] = vertexIndex - 1;
+        triangles[( vertexIndex - 2 ) * 3 + 2] = vertexIndex;
+      }
+      vertexIndex++;
+
+      heading = headingDelta * heading;
     }
+
+    // Update the mesh with new vertices and triangles
+    mesh.vertices = vertices;
+    mesh.triangles = triangles;
+
+    // Recalculate normals and bounds
+    mesh.RecalculateNormals ();
+    mesh.RecalculateBounds ();
+  }
 }

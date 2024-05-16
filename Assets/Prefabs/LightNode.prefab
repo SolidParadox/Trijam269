@@ -98,6 +98,7 @@ MonoBehaviour:
   angle: 361
   rays: 361
   distance: 10
+  baseLightPower: 5
   contactFilter:
     useTriggers: 0
     useLayerMask: 1
