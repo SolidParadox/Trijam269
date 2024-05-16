@@ -1,15 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LightMAN : MonoBehaviour
-{
-    public RadarCore radar;
-    void Update()
-    {
-        if ( radar.breached )
-        {
-            Destroy(gameObject);
-        }        
+public class LightMAN : MonoBehaviour {
+  public RadarCore radar;
+  public AudioSource breakAS;
+
+  public GameObject[] dead;
+
+  void Update () {
+    if ( radar.breached ) {
+      breakAS.Play ();
+      for ( int i = 0; i < dead.Length; i++ ) {
+        Destroy ( dead[i] );  
+      }
+      GetComponent<LightZone> ().enabled = false;
+      enabled = false;
     }
+  }
 }

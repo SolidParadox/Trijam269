@@ -13,7 +13,6 @@ public class MANAud : MonoBehaviour {
     droneAS.volume = strengthBDS;
     player = SceneCore.Instance.playerTransform;
     enemyProximityRadar = player.GetChild(2).GetComponent<RadarCore>();
-    Debug.Log ( player.GetChild ( 2 ).gameObject.name );
   }
 
   private void LateUpdate () {

@@ -183,6 +183,67 @@ MonoBehaviour:
   tagMode: 2
   changeLastFrame: 0
   includeTriggers: 0
+--- !u!1 &2773794920326463566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7513916706112169480}
+  - component: {fileID: 1620116346795234651}
+  - component: {fileID: 3208079200257090253}
+  m_Layer: 6
+  m_Name: AUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7513916706112169480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773794920326463566}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5847696479022365974}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1620116346795234651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773794920326463566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fee8837731a13141a75c7e9a03b5071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedTransform: {fileID: 6245081052013640158}
+  trackedRigidbody: {fileID: 7987856851078500002}
+  linearOffset: {x: 0, y: 0, z: 0}
+  strengthV: 0
+  strengthR: 0
+  strengthLD: 30
+  switchRT: 0
+  teleportRange: 10
+--- !u!81 &3208079200257090253
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773794920326463566}
+  m_Enabled: 1
 --- !u!1 &3658489309977896745
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1940828344271736346, guid: 84212ad1b0136404aab16060584efcd9, type: 3}
   fireDelay: 0.2
+  fireAS: {fileID: 7398779519212451685}
 --- !u!1 &5320058678965149642
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +749,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: da82f5f5d8f5fcf43b42baad1740a60d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -731,7 +793,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -802,6 +864,7 @@ Transform:
   m_Children:
   - {fileID: 8602131468523535753}
   - {fileID: 6245081052013640158}
+  - {fileID: 7513916706112169480}
   - {fileID: 2750936651958881149}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
