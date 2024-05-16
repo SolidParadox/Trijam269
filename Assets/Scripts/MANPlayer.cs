@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class MANPlayer : MANEntity {
-    public Camera cam;
     public Transform visualRig;
 
     public RadarCore deathRadar;

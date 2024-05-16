@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class MANAud : MonoBehaviour {
   public AudioSource droneAS;
-  public Transform    player;
 
   public float strengthBDS; // BASE DRONE SOUND LEVEL
   public float detectionRadius;
 
+  private Transform    player;
   private RadarCore    enemyProximityRadar;
 
   void Start () {

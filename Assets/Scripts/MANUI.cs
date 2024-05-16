@@ -22,10 +22,9 @@ public class MANUI : MonoBehaviour
         {
             DisplayBigMessage("GAME OVER");
         }
-        label.text = SceneCore.Instance.enemyCount.ToString();
-        if (SceneCore.Instance.enemyCount == 0 && !SceneCore.Instance.gameover && !playerHasWon )
+        label.text = SceneCore.Instance.dormantCount.ToString();
+        if (SceneCore.Instance.dormantCount == 0 && SceneCore.Instance.feralCount == 0 && !SceneCore.Instance.gameover && !playerHasWon )
         {
-            DisplayBigMessage("SURVIVED");
             playerHasWon = true;
             asyncOperation = SceneManager.LoadSceneAsync(nextLevel);
             asyncOperation.allowSceneActivation = false;

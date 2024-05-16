@@ -27,6 +27,7 @@ public class MANEnemy : MANEntity {
     base.Start ();
     s1.SetActive ( true );
     s2.SetActive ( false );
+    SceneCore.Instance.EnemyAutoSubscribe ();
   }
 
   public void SetTarget ( Vector2 target ) {
@@ -66,7 +67,7 @@ public class MANEnemy : MANEntity {
     if ( !lightSensor.inLight && state >= 2 ) {
       lightHP -= shadowDPS * Time.deltaTime;
       if ( lightHP <= 0 ) {
-        SceneCore.Instance.enemyCount--;
+        SceneCore.Instance.EnemyFeralDeath ();
         Destroy ( gameObject );
       }
     }
@@ -75,7 +76,11 @@ public class MANEnemy : MANEntity {
       deltaT -= Time.deltaTime;
       if ( deltaT < 0 ) {
         if ( state == 1 || state == 3 ) {
-          if ( state == 1 ) { s1.SetActive ( false ); s2.SetActive ( true ); }
+          if ( state == 1 ) {
+            SceneCore.Instance.EnemyWakeUp (); 
+            s1.SetActive ( false ); 
+            s2.SetActive ( true );
+          }
           SetTarget ( SceneCore.Instance.playerTransform.position );
           state = 2;
         }
