@@ -8,8 +8,6 @@ public class LightSensor : MonoBehaviour {
   public float threshold;
   public float maxCapacity;
 
-  public bool DEBUGSWITCH;
-
   private void Start () {
     lightLevel = 0;
   }
@@ -25,7 +23,6 @@ public class LightSensor : MonoBehaviour {
   }
 
   public void InLightPing ( float power ) {
-    if ( DEBUGSWITCH ) Debug.Log ( Time.deltaTime + " " + power );
     lightLevel += power;
     if ( lightLevel > maxCapacity ) {
       lightLevel = maxCapacity;

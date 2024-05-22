@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3801002592070141342}
-  - component: {fileID: 5026633670483384836}
   - component: {fileID: 5372554338042206222}
+  - component: {fileID: 5987044658258097717}
   m_Layer: 7
   m_Name: VIS
   m_TagString: Enemy
@@ -36,26 +36,6 @@ Transform:
   - {fileID: 7321508293960098221}
   m_Father: {fileID: 6329959553705309138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5026633670483384836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778066804937176595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fee8837731a13141a75c7e9a03b5071, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackedTransform: {fileID: 1637515618895460442}
-  trackedRigidbody: {fileID: 4622098011332009326}
-  linearOffset: {x: 0, y: 0, z: 0}
-  strengthV: 0
-  strengthR: 10
-  strengthLD: 30
-  switchRT: 0
-  teleportRange: 10
 --- !u!114 &5372554338042206222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +52,26 @@ MonoBehaviour:
   - {fileID: 282618475197508192}
   - {fileID: 6931882600445569443}
   lightSensor: {fileID: 4668933856338055995}
+--- !u!114 &5987044658258097717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778066804937176595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2908bea98a9190f4d9a847acfcf06081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedTransform: {fileID: 1637515618895460442}
+  trackedRigidbody: {fileID: 4622098011332009326}
+  linearOffset: {x: 0, y: 0, z: 0}
+  strengthV: 0
+  strengthR: 10
+  strengthLD: 30
+  switchRT: 0
+  teleportRange: 10
 --- !u!1 &3452933349371093760
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1911597005481238468}
   - component: {fileID: 5262608417960952522}
-  - component: {fileID: 6986987449592815924}
+  - component: {fileID: 6847644779393176430}
   m_Layer: 7
   m_Name: BulletRadar
   m_TagString: Enemy
@@ -330,7 +330,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &6986987449592815924
+--- !u!114 &6847644779393176430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5514257365783200665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f59c7f35e051eb49940d8581d0e0afb, type: 3}
+  m_Script: {fileID: 11500000, guid: 55b72e17b4a5a2e4db243c7f8f5ccb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   contacts: []
@@ -398,7 +398,6 @@ MonoBehaviour:
   lightLevel: 0
   threshold: 0.25
   maxCapacity: 1
-  DEBUGSWITCH: 0
 --- !u!60 &7610947154930063
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -541,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6329959553705309138}
   - component: {fileID: 689408752290834624}
-  - component: {fileID: 1108143685705794939}
+  - component: {fileID: 311225368189342446}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -585,12 +584,12 @@ MonoBehaviour:
   stunBulletAddition: 0.1
   state: 0
   lightSensor: {fileID: 4668933856338055995}
-  radar: {fileID: 5599710661112231255}
-  bulletRadar: {fileID: 6986987449592815924}
+  radar: {fileID: 32057201006467942}
+  bulletRadar: {fileID: 6847644779393176430}
   s1: {fileID: 7494066419897463976}
   s2: {fileID: 8453077125021625679}
   slamAS: {fileID: 3069610850112573989}
---- !u!114 &1108143685705794939
+--- !u!114 &311225368189342446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -599,11 +598,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7910748208856299937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d5918b6b32d50c42ae056f5e458b573, type: 3}
+  m_Script: {fileID: 11500000, guid: d7c029d141ce6e54f918b4a5e159e4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rgb: {fileID: 4622098011332009326}
-  acc: 30
+  acc: 60
   mxv: 30
   strengthDOS: 10
   strengthD: 0.1
@@ -616,8 +615,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5100824503071492991}
-  - component: {fileID: 5599710661112231255}
   - component: {fileID: 8990490796657932438}
+  - component: {fileID: 32057201006467942}
   m_Layer: 7
   m_Name: ColRadar
   m_TagString: Enemy
@@ -640,25 +639,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1637515618895460442}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &5599710661112231255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7922773768457527581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f59c7f35e051eb49940d8581d0e0afb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contacts: []
-  targetTags:
-  - Wall
-  - Player
-  tagMode: 2
-  changeLastFrame: 0
-  includeTriggers: 0
 --- !u!60 &8990490796657932438
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -707,6 +687,25 @@ PolygonCollider2D:
       - {x: -0.3, y: 0.35}
       - {x: -0.3, y: -0.35}
   m_UseDelaunayMesh: 0
+--- !u!114 &32057201006467942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7922773768457527581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55b72e17b4a5a2e4db243c7f8f5ccb72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contacts: []
+  targetTags:
+  - Wall
+  - Player
+  tagMode: 2
+  changeLastFrame: 0
+  includeTriggers: 0
 --- !u!1 &8453077125021625679
 GameObject:
   m_ObjectHideFlags: 0

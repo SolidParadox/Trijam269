@@ -54,13 +54,17 @@ public class MANEnemy : MANEntity {
         deltaT = stunDuration;
       }
     }
-    if ( state == 3 && radar.breached ) {
-      mika.SetThrusterOutput ( targetHeading );
-    }
-    if ( state == 3 && bulletRadar.breached ) {
-      deltaT += stunBulletAddition;
-      for ( int i = 0; i < bulletRadar.contacts.Count; i++ ) {
-        Destroy ( bulletRadar.contacts[i] );
+    if ( state == 3 ) {
+      if ( radar.breached ) {
+        mika.SetThrusterOutput ( targetHeading );
+      } else {
+        mika.rgb.rotation += 0.30f * Random.Range ( 0, 100 );
+      }
+      if ( bulletRadar.breached ) {
+        deltaT += stunBulletAddition;
+        for ( int i = 0; i < bulletRadar.contacts.Count; i++ ) {
+          Destroy ( bulletRadar.contacts[i] );
+        }
       }
     }
 
