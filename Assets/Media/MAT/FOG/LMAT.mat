@@ -106,7 +106,7 @@ Material:
     - _OcclusionStrength: 1
     - _POW: 5.82
     - _Parallax: 0.02
-    - _SM: 0.16
+    - _SM: 0.44
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
