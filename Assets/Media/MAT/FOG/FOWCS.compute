@@ -1,0 +1,18 @@
+#pragma kernel CSMain
+
+Texture2D<float4> Original; // Output texture
+RWTexture2D<float4> Result; // Output texture
+float decayFactor; // Decay factor ( duh ) 
+
+float spectral(float4 a)
+{
+    return a.x * a.w;
+}
+
+[numthreads(8, 8, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    int2 coords = id.xy;
+    Result[coords] = lerp(Result[coords], Original[coords], decayFactor);
+    //Result[coords] = max(Original[coords], Result[coords] * decayFactor );
+}

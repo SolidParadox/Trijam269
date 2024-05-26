@@ -35,8 +35,10 @@ public class LightZone : MonoBehaviour {
     RaycastHit2D[] results = new RaycastHit2D[16];
 
     vertices = new Vector3[rays + 1];
+    Vector2[] uv = new Vector2[rays + 1];
     triangles = new int[( rays - 1 ) * 3];
     vertices[0] = transform.position;
+    uv[0] = Vector2.zero;
     vertexIndex = 1;
 
     float fpd;
@@ -72,10 +74,12 @@ public class LightZone : MonoBehaviour {
 
 
       vertices[vertexIndex] = heading * fpd + (Vector2) transform.position;
+      //uv[vertexIndex] = new Vector2 ( ( vertexIndex - 1 ) / (float)rays, fpd / distance );
+      uv[vertexIndex] = Vector2.one * fpd / distance;
       if ( vertexIndex >= 2 ) {
         triangles[( vertexIndex - 2 ) * 3] = 0;
-        triangles[( vertexIndex - 2 ) * 3 + 1] = vertexIndex - 1;
-        triangles[( vertexIndex - 2 ) * 3 + 2] = vertexIndex;
+        triangles[( vertexIndex - 2 ) * 3 + 1] = vertexIndex;
+        triangles[( vertexIndex - 2 ) * 3 + 2] = vertexIndex - 1;
       }
       vertexIndex++;
 
@@ -85,6 +89,7 @@ public class LightZone : MonoBehaviour {
     // Update the mesh with new vertices and triangles
     mesh.vertices = vertices;
     mesh.triangles = triangles;
+    mesh.uv = uv;
 
     // Recalculate normals and bounds
     mesh.RecalculateNormals ();
