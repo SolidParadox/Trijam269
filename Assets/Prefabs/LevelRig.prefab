@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ReverseArrangement: 1
 --- !u!1 &8840656125169984260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bigMessageLabel: {fileID: 7961133834241916519}
   animator: {fileID: 5189785333770352998}
-  nextLevel: 1
+  nextLevel: 0
   nextLevelTimer: 2.5
   anchorHLG: {fileID: 7923066644657416635}
   anchorHLG2: {fileID: 7194401578920554215}
