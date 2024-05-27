@@ -15,7 +15,6 @@ public class SceneCore : MonoBehaviour {
 
   public List<MANEnemy> enemies;
 
-
   private void Awake () {
     // Ensure only one instance of the class exists
     if ( Instance == null ) {

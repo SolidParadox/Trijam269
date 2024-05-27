@@ -24,12 +24,15 @@ public class MANEnemy : MANEntity {
 
   public AudioSource slamAS;
 
+  private void Awake () {
+    SceneCore.Instance.EnemyAutoSubscribe ( this );
+  }
+
   override protected void Start () {
     base.Start ();
     s1.SetActive ( true );
     s2.SetActive ( false );
     originalHP = lightHP;
-    SceneCore.Instance.EnemyAutoSubscribe ( this );
   }
 
   public void SetTarget ( Vector2 target ) {
@@ -39,12 +42,12 @@ public class MANEnemy : MANEntity {
 
   public float Status () {
     if ( state == 0 ) {
-      return 1.4f;
+      return 1;
     }
     if ( state == 1 ) {
-      return 1.4f * deltaT / wakeupDuration;
+      return deltaT / wakeupDuration;
     }
-    return 1.4f * lightHP / originalHP;
+    return lightHP / originalHP;
   }
 
   public bool Feral() {

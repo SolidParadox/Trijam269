@@ -13,28 +13,23 @@ public class MANUI : MonoBehaviour {
   public float nextLevelTimer;
   private AsyncOperation asyncOperation; // Reference to the asynchronous operation
 
-  public RectTransform anchorHLG,anchorHLG2;
+  public RectTransform anchorHLG;
 
-  public Color eUIDormant;
-  public Color eUIFeral;
+  private void Start () {
+    int eTC = SceneCore.Instance.feralCount + SceneCore.Instance.dormantCount;
+
+    for ( int i = 0; i < anchorHLG.childCount; i++ ) {
+      anchorHLG.GetChild ( i ).gameObject.SetActive ( i < eTC );
+      if ( i < eTC ) {
+        anchorHLG.GetChild ( i ).GetComponent<CUEuler> ().target = SceneCore.Instance.enemies[i];
+      }
+    }
+  }
 
   void LateUpdate () {
     // Display the game OverScreen via animation
     if ( SceneCore.Instance.gameover ) {
       DisplayBigMessage ( "GAME OVER" );
-    }
-
-    int eTC = SceneCore.Instance.feralCount + SceneCore.Instance.dormantCount;
-
-    for ( int i = 0; i < anchorHLG.childCount; i++ ) {
-      anchorHLG.GetChild( i ).gameObject.SetActive( i < eTC );
-      anchorHLG2.GetChild ( i ).gameObject.SetActive ( i < eTC );
-      if ( i < eTC ) {
-        anchorHLG.GetChild ( i ).GetComponent<Slider> ().value = 0.6f + SceneCore.Instance.enemies[i].Status ();
-        anchorHLG.GetChild ( i ).GetComponent<Slider> ().fillRect.GetComponent<Image>().color = SceneCore.Instance.enemies[i].Feral() ? Color.red : Color.white;
-        anchorHLG2.GetChild ( i ).GetComponent<Slider> ().value = 0.6f + SceneCore.Instance.enemies[i].Status ();
-        anchorHLG2.GetChild ( i ).GetComponent<Slider> ().fillRect.GetComponent<Image> ().color = SceneCore.Instance.enemies[i].Feral () ? Color.red : Color.white;
-      }
     }
 
     if ( SceneCore.Instance.dormantCount == 0 && SceneCore.Instance.feralCount == 0 && !SceneCore.Instance.gameover && !playerHasWon ) {
