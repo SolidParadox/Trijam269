@@ -13,23 +13,33 @@ public class SceneCore : MonoBehaviour {
 
   public bool gameover;
 
+  public List<MANEnemy> enemies;
+
+
   private void Awake () {
     // Ensure only one instance of the class exists
     if ( Instance == null ) {
       Instance = this;
+      enemies = new List<MANEnemy>();
     } else {
       Destroy ( gameObject );
     }
   }
-  public void EnemyAutoSubscribe () {
+  public void EnemyAutoSubscribe ( MANEnemy instance ) {
     dormantCount++;
+    if ( !enemies.Contains ( instance ) ) {
+      enemies.Add ( instance );
+    }
   }
 
   public void EnemyWakeUp () {
     dormantCount--;
     feralCount++;
   }
-  public void EnemyFeralDeath () {
+  public void EnemyFeralDeath ( MANEnemy instance ) {
     feralCount--;
+    if ( enemies.Contains ( instance ) ) {
+      enemies.Remove ( instance );
+    }
   }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MANEnemy : MANEntity {
   public float lightHP;
+  private float originalHP;
   public float shadowDPS;
 
   public float wakeupDuration;
@@ -27,12 +28,27 @@ public class MANEnemy : MANEntity {
     base.Start ();
     s1.SetActive ( true );
     s2.SetActive ( false );
-    SceneCore.Instance.EnemyAutoSubscribe ();
+    originalHP = lightHP;
+    SceneCore.Instance.EnemyAutoSubscribe ( this );
   }
 
   public void SetTarget ( Vector2 target ) {
     targetHeading = target - mika.rgb.position;
     mika.rgb.rotation = Vector3.SignedAngle ( Vector3.up, targetHeading, Vector3.forward );
+  }
+
+  public float Status () {
+    if ( state == 0 ) {
+      return 1.4f;
+    }
+    if ( state == 1 ) {
+      return 1.4f * deltaT / wakeupDuration;
+    }
+    return 1.4f * lightHP / originalHP;
+  }
+
+  public bool Feral() {
+    return state > 1;
   }
 
   void Update () {
@@ -71,7 +87,7 @@ public class MANEnemy : MANEntity {
     if ( !lightSensor.inLight && state >= 2 ) {
       lightHP -= shadowDPS * Time.deltaTime;
       if ( lightHP <= 0 ) {
-        SceneCore.Instance.EnemyFeralDeath ();
+        SceneCore.Instance.EnemyFeralDeath ( this );
         Destroy ( gameObject );
       }
     }

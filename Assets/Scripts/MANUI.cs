@@ -26,13 +26,12 @@ public class MANUI : MonoBehaviour {
 
     int eTC = SceneCore.Instance.feralCount + SceneCore.Instance.dormantCount;
 
-    Vector2 hlgSizeDelta = anchorHLG.sizeDelta;
-    hlgSizeDelta.x = eTC * 30 + ( eTC - 1 ) * 5;
-    anchorHLG.sizeDelta = hlgSizeDelta;
-
     for ( int i = 0; i < anchorHLG.childCount; i++ ) {
       anchorHLG.GetChild( i ).gameObject.SetActive( i < eTC );
-      anchorHLG.GetChild ( i ).GetComponent<Image> ().color = i < SceneCore.Instance.dormantCount ? eUIDormant : eUIFeral;
+      if ( i < eTC ) {
+        anchorHLG.GetChild ( i ).GetComponent<Slider> ().value = 0.6f + SceneCore.Instance.enemies[i].Status ();
+        anchorHLG.GetChild ( i ).GetComponent<Slider> ().fillRect.GetComponent<Image>().color = SceneCore.Instance.enemies[i].Feral() ? Color.red : Color.white;
+      }
     }
 
     if ( SceneCore.Instance.dormantCount == 0 && SceneCore.Instance.feralCount == 0 && !SceneCore.Instance.gameover && !playerHasWon ) {
@@ -50,18 +49,6 @@ public class MANUI : MonoBehaviour {
     if ( Input.GetAxis ( "Reset" ) > 0 ) {
       SceneManager.LoadScene ( SceneManager.GetActiveScene ().buildIndex );
     }
-  }
-  IEnumerator SwitchToLoadedSceneCoroutine () {
-    // Wait for the scene loading operation to complete
-    while ( !asyncOperation.isDone ) {
-      yield return null;
-    }
-
-    // Wait for the delay before switching to the loaded scene
-    yield return new WaitForSeconds ( nextLevelTimer );
-
-    // Allow the loaded scene to be activated
-    asyncOperation.allowSceneActivation = true;
   }
 
   public void DisplayBigMessage ( string alpha ) {
