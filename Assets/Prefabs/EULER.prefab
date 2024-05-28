@@ -172,7 +172,7 @@ MonoBehaviour:
   drag: 0.999
   i1: {fileID: 2803980156432471613}
   i2: {fileID: 5645869746152692540}
-  blendLS: 0.99
+  blendLS: 3
 --- !u!95 &5179446658276754129
 Animator:
   serializedVersion: 5

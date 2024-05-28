@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7260889162113089561}
   - component: {fileID: 2924304111330048165}
   - component: {fileID: 475355625219966526}
+  - component: {fileID: 8116967555531990773}
   m_Layer: 0
   m_Name: LightNode
   m_TagString: Untagged
@@ -79,6 +80,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radar: {fileID: 1327497420732302653}
   breakAS: {fileID: 2148204004111078765}
+  lz: {fileID: 475355625219966526}
+  cable: {fileID: 8116967555531990773}
+  reqPower: 0
+  maxLightPower: 5
   dead:
   - {fileID: 6406527123047674293}
   - {fileID: 1202504858358991307}
@@ -99,6 +104,7 @@ MonoBehaviour:
   rays: 361
   distance: 10
   baseLightPower: 5
+  smFactor: 0.3
   contactFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -114,6 +120,21 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   mf: {fileID: 7263256337319339229}
+  mr: {fileID: 3604242076643087675}
+--- !u!114 &8116967555531990773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236011641134986878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d264352c32d6f8468b0cc7ede56f2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkA: {fileID: 0}
+  throughput: 0
 --- !u!1 &1202504858358991307
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,8 +331,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6406527123047674293}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: -5, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

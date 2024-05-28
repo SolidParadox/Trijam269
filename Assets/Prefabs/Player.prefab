@@ -547,6 +547,7 @@ MonoBehaviour:
   rays: 30
   distance: 20
   baseLightPower: 5
+  smFactor: 0.3
   contactFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -562,6 +563,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   mf: {fileID: 5603165246202586404}
+  mr: {fileID: 651738741785482705}
 --- !u!114 &4572566878373962793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,6 +937,7 @@ MonoBehaviour:
   rays: 37
   distance: 5
   baseLightPower: 10
+  smFactor: 0
   contactFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -950,6 +953,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   mf: {fileID: 4643663216512342832}
+  mr: {fileID: 4217965027436238180}
 --- !u!1 &6953353234989953368
 GameObject:
   m_ObjectHideFlags: 0

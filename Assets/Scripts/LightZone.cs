@@ -8,10 +8,12 @@ public class LightZone : MonoBehaviour {
 
   public float distance;
   public float baseLightPower;
+  public float smFactor;
 
   public ContactFilter2D contactFilter;
 
   public MeshFilter mf;
+  public MeshRenderer mr;
   private Mesh mesh;
 
   private Vector3[] vertices; // Vertices of the mesh
@@ -24,10 +26,13 @@ public class LightZone : MonoBehaviour {
     mesh = new Mesh ();
     mf.mesh = mesh;
     mf.transform.position = Vector3.zero;
+    mr.material = new Material ( mr.material );
   }
 
   void FixedUpdate () {
     if ( rays == 0 ) { return; }
+
+    mr.material.SetFloat ( "_SM", baseLightPower * smFactor );
 
     Vector2 heading = Quaternion.Euler(0, 0, -angle / 2) * transform.up;
     Quaternion headingDelta = Quaternion.Euler(0, 0, angle / rays);
