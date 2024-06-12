@@ -504,7 +504,6 @@ GameObject:
   - component: {fileID: 8602131468523535753}
   - component: {fileID: 712069233570419249}
   - component: {fileID: 4572566878373962793}
-  - component: {fileID: 8569784328071777031}
   - component: {fileID: 8189449144987281829}
   m_Layer: 6
   m_Name: VIS
@@ -578,21 +577,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprites: []
   lightSensor: {fileID: 0}
---- !u!114 &8569784328071777031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4949183679347348340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e4d7201198cdc84c928fb1b45877220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 1940828344271736346, guid: 84212ad1b0136404aab16060584efcd9, type: 3}
-  fireDelay: 0.2
-  fireAS: {fileID: 7398779519212451685}
 --- !u!114 &8189449144987281829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,10 +688,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rgb: {fileID: 7987856851078500002}
-  acc: 30
+  acc: 100
   mxv: 10
-  strengthDOS: 10
-  strengthD: 0.5
+  strengthDOS: 100
+  strengthD: 5
 --- !u!1 &6188145568138959214
 GameObject:
   m_ObjectHideFlags: 0

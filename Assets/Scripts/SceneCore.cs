@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SceneCore : MonoBehaviour {
   public static SceneCore Instance { get; private set; }
+  public MANNav nav;
 
   public Transform playerTransform;
   public Transform spawnTransform;
@@ -24,6 +25,7 @@ public class SceneCore : MonoBehaviour {
       Destroy ( gameObject );
     }
   }
+
   public void EnemyAutoSubscribe ( MANEnemy instance ) {
     dormantCount++;
     if ( !enemies.Contains ( instance ) ) {

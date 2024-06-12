@@ -51,7 +51,7 @@ public class LightZone : MonoBehaviour {
 
     for ( int i = 0; i < rays; i++ ) {
       deltaHC = Physics2D.Raycast ( transform.position, heading, contactFilter, results );
-      Debug.DrawLine ( transform.position, transform.position + (Vector3) heading * 10, Color.cyan );
+      //Debug.DrawLine ( transform.position, transform.position + (Vector3) heading * 10, Color.cyan );
 
       fpd = distance;
 
@@ -71,8 +71,8 @@ public class LightZone : MonoBehaviour {
               results[j].collider.GetComponent<LightSensor> ().InLightPing ( Time.fixedDeltaTime * baseLightPower * ( 1 - results[j].distance / distance ) );
               touched.Add ( results[j].collider );
             }
-            Debug.DrawLine ( transform.position, results[j].point, Color.red );
-            Debug.DrawLine ( results[j].point, results[j].point + new Vector2 ( 0, 0.2f ), Color.green );
+            //Debug.DrawLine ( transform.position, results[j].point, Color.red );
+            //Debug.DrawLine ( results[j].point, results[j].point + new Vector2 ( 0, 0.2f ), Color.green );
           }
         }
       }
