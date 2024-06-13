@@ -37,6 +37,7 @@ public class MANEnemy : MANEntity {
 
   public void SetTarget ( Vector2 target ) {
     targetHeading = target - mika.rgb.position;
+    targetHeading.Normalize ();
     mika.rgb.rotation = Vector3.SignedAngle ( Vector3.up, targetHeading, Vector3.forward );
   }
 
@@ -64,6 +65,7 @@ public class MANEnemy : MANEntity {
       state = 0;
     }
 
+    Debug.DrawLine ( mika.rgb.position, mika.rgb.position + targetHeading * 10, Color.magenta );
     if ( state == 2 ) {
       mika.SetThrusterOutput ( targetHeading );
       if ( radar.breached ) {
@@ -104,7 +106,7 @@ public class MANEnemy : MANEntity {
             s1.SetActive ( false ); 
             s2.SetActive ( true );
           }
-          SetTarget ( SceneCore.Instance.playerTransform.position );
+          SetTarget ( SceneCore.Instance.nav.GetPath ( mika.rgb.position, SceneCore.Instance.playerTransform.position ) );
           state = 2;
         }
       }

@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,7 +38,7 @@ public class MANUI : MonoBehaviour {
     }
     if ( playerHasWon && nextLevel != -1 ) {
       nextLevelTimer -= Time.deltaTime;
-      DisplayBigMessage ( "NEXT LEVEL IN: " + nextLevelTimer.ToString ( "F2" ) );
+      DisplayBigMessage ( "EXTRACTION IN : " + nextLevelTimer.ToString ( "F2" ) );
       if ( nextLevelTimer < 0 ) {
         asyncOperation.allowSceneActivation = true;
       }

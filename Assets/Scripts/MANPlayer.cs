@@ -5,6 +5,8 @@ public class MANPlayer : MANEntity {
 
   public RadarCore deathRadar;
 
+  //public Vector2 DEBUGTARGET;
+
   void LateUpdate () {
     mika.AddThrusterOutput ( new Vector2 ( Input.GetAxis ( "Horizontal" ), Input.GetAxis ( "Vertical" ) ) );
     Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -18,8 +20,10 @@ public class MANPlayer : MANEntity {
       mika.enabled = false;
       enabled = false;
     }
-
-    Debug.Log ( SceneCore.Instance.nav.GetRoom ( transform.position ) );
+    //Vector2 deltaHeading = SceneCore.Instance.nav.GetPath ( mika.rgb.position, DEBUGTARGET );
+    //Debug.DrawLine ( mika.rgb.position, mika.rgb.position + deltaHeading, Color.magenta );
+    //Debug.Log ( deltaHeading );
+    //Debug.Log ( SceneCore.Instance.nav.GetRoom ( transform.position ) );
   }
 
   private void FixedUpdate () {
