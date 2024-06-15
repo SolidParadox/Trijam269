@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MANUI : MonoBehaviour {
   public TMP_Text bigMessageLabel;
@@ -14,6 +14,9 @@ public class MANUI : MonoBehaviour {
 
   public RectTransform anchorHLG;
 
+  public Animator cutterIndicator;
+  public RadarCore cutterRadar;
+
   private void Start () {
     int eTC = SceneCore.Instance.feralCount + SceneCore.Instance.dormantCount;
 
@@ -23,6 +26,7 @@ public class MANUI : MonoBehaviour {
         anchorHLG.GetChild ( i ).GetComponent<CUEuler> ().target = SceneCore.Instance.enemies[i];
       }
     }
+    cutterRadar = SceneCore.Instance.playerTransform.GetChild ( 3 ).GetComponent<RadarCore>();
   }
 
   void LateUpdate () {
@@ -46,6 +50,7 @@ public class MANUI : MonoBehaviour {
     if ( Input.GetAxis ( "Reset" ) > 0 ) {
       SceneManager.LoadScene ( SceneManager.GetActiveScene ().buildIndex );
     }
+    cutterIndicator.SetBool ( "CableNearby", cutterRadar.breached );
   }
 
   public void DisplayBigMessage ( string alpha ) {

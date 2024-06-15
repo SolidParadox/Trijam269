@@ -169,7 +169,7 @@ MonoBehaviour:
   - Cable
   tagMode: 2
   changeLastFrame: 0
-  includeTriggers: 0
+  includeTriggers: 1
 --- !u!1 &1488741908315101684
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,9 +215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   continuousFire: 0
-  fireCooldown: 0
-  cutLength: 0
-  cableRadar: {fileID: 0}
+  fireCooldown: 0.5
+  cutLength: 0.25
+  cableRadar: {fileID: 7368407576833915026}
 --- !u!1 &1690466523748844184
 GameObject:
   m_ObjectHideFlags: 0
