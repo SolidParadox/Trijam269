@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 [ExecuteInEditMode]
 public class SUPCableLayer : MonoBehaviour {
@@ -16,20 +15,20 @@ public class SUPCableLayer : MonoBehaviour {
 
   public void Create () {
     for ( int i = 0; i < placementAnchor.childCount; i++ ) {
-      DestroyImmediate ( placementAnchor.GetChild(i).gameObject ); 
+      DestroyImmediate ( placementAnchor.GetChild ( i ).gameObject );
     }
-    HORCableCutter dhc = null;
+    ENGCable cableDelta, cableDelta2 = null;
     for ( int i = 0; i < anchors.Length - 1; i++ ) {
-      GameObject delta = Instantiate ( stuff, placementAnchor );
-      HORCableCutter dhc2 = delta.GetComponent<HORCableCutter> ();
-      
-      dhc2.edge.SetPoints ( new List<Vector2> { anchors[i].position, anchors[i + 1].position } );
-      dhc2.SetFlowDirection ();
+      GameObject delta = (GameObject)PrefabUtility.InstantiatePrefab ( stuff, placementAnchor );
+      cableDelta = delta.GetComponent<ENGCable> ();
 
-      if ( dhc != null ) {
-        dhc.cable.linkA = dhc2.cable;
+      cableDelta.edge.SetPositions ( new Vector3[] { anchors[i].position, anchors[i + 1].position } );
+      cableDelta.SetFlowDirection ();
+
+      if ( cableDelta2 != null ) {
+        cableDelta2.linkA = cableDelta;
       }
-      dhc = dhc2;
+      cableDelta2 = cableDelta;
     }
   }
 }

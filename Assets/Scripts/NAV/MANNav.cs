@@ -16,7 +16,7 @@ public class MANNav : MonoBehaviour {
     public float value;
     public Vector2 pos;
     public List<Node> neighbours;
-    public Node() {  value = 0; neighbours = new List<Node> (); pos = Vector2.zero; }
+    public Node () { value = 0; neighbours = new List<Node> (); pos = Vector2.zero; }
   }
   public List<Node> nodes;
 
@@ -27,7 +27,7 @@ public class MANNav : MonoBehaviour {
   private void OnGUI () {
     return;
     for ( int i = 0; i < gates.Length; i++ ) {
-      Debug.DrawLine ( nodes[gates[i].a].pos, gates[ i ].coord.position, Color.red, 300 );
+      Debug.DrawLine ( nodes[gates[i].a].pos, gates[i].coord.position, Color.red, 300 );
       Debug.DrawLine ( gates[i].coord.position, nodes[gates[i].b].pos, Color.red, 300 );
     }
   }
@@ -45,7 +45,7 @@ public class MANNav : MonoBehaviour {
     int endRoom = GetRoom(end);
 
     if ( startRoom == endRoom && startRoom != -1 ) {
-      return end - start;
+      return end;
     }
 
     Dictionary<Node, Node> predecessors = new Dictionary<Node, Node>();
@@ -58,7 +58,7 @@ public class MANNav : MonoBehaviour {
     Node endNode = nodes [ endRoom ];
 
     if ( startNode == null || endNode == null ) {
-      return Vector2.zero; 
+      return Vector2.zero;
     }
 
     startNode.value = 0;
@@ -78,8 +78,6 @@ public class MANNav : MonoBehaviour {
         }
       }
     }
-
-    List<Vector2> path = new List<Vector2>();
     Node pathNode = endNode;
 
     if ( !predecessors.ContainsKey ( endNode ) ) {
@@ -95,12 +93,12 @@ public class MANNav : MonoBehaviour {
 
 
   public void GenerateNodes () {
-    nodes = new List<Node>();
+    nodes = new List<Node> ();
     Node deltaNode;
     for ( int i = 0; i < rooms.Length; i++ ) {
       deltaNode = new Node ();
       Vector2 dc = Vector2.zero;
-      for ( int j = 0; j < rooms[ i ].points.Length; j++ ) {
+      for ( int j = 0; j < rooms[i].points.Length; j++ ) {
         dc += rooms[i].points[j];
       }
       deltaNode.pos = dc / rooms[i].points.Length;
@@ -108,11 +106,11 @@ public class MANNav : MonoBehaviour {
     }
     for ( int i = 0; i < gates.Length; i++ ) {
       deltaNode = new Node ();
-      deltaNode.pos = gates [ i ].coord.position;
+      deltaNode.pos = gates[i].coord.position;
       deltaNode.neighbours.Add ( nodes[gates[i].a] );
       deltaNode.neighbours.Add ( nodes[gates[i].b] );
       nodes.Add ( deltaNode );
-      nodes[gates[i].a].neighbours.Add ( nodes[ nodes.Count - 1 ] );
+      nodes[gates[i].a].neighbours.Add ( nodes[nodes.Count - 1] );
       nodes[gates[i].b].neighbours.Add ( nodes[nodes.Count - 1] );
     }
   }

@@ -7,7 +7,6 @@ public class MANEnemy : MANEntity {
 
   public float wakeupDuration;
   public float stunDuration;
-  public float stunBulletAddition;
   private float deltaT = 0;
 
   public int state;
@@ -18,7 +17,6 @@ public class MANEnemy : MANEntity {
   private Vector2 targetHeading;
 
   public RadarCore radar;
-  public RadarCore bulletRadar;
 
   public GameObject s1, s2;
 
@@ -80,12 +78,6 @@ public class MANEnemy : MANEntity {
         mika.SetThrusterOutput ( targetHeading );
       } else {
         mika.rgb.rotation += 0.30f * Random.Range ( 0, 100 );
-      }
-      if ( bulletRadar.breached ) {
-        deltaT += stunBulletAddition;
-        for ( int i = 0; i < bulletRadar.contacts.Count; i++ ) {
-          Destroy ( bulletRadar.contacts[i] );
-        }
       }
     }
 

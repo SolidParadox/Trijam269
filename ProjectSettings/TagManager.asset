@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bullet
   - Wall
   - Enemy
   - Transparent
+  - Cable
   layers:
   - Default
   - TransparentFX
@@ -17,7 +17,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - Bullet
+  - 
   - Light
   - 
   - 

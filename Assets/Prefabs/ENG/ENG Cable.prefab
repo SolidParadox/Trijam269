@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2278140621120551039}
   - component: {fileID: 7953318533952476261}
-  - component: {fileID: 4330555185063965467}
   m_Layer: 0
   m_Name: ENG Cable
-  m_TagString: Untagged
+  m_TagString: Cable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,25 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkA: {fileID: 0}
   throughput: 0
---- !u!114 &4330555185063965467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4441285846250107506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f39fcc3c304a344a064120ca5de4fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cable: {fileID: 7953318533952476261}
   wirePrefab: {fileID: 4441285846250107506}
-  intreruptRadar: {fileID: 8894932556853559640}
-  edge: {fileID: 96952929601211591}
-  edgeRender: {fileID: 7150129798810381736}
-  length: 0
-  minLength: 2
+  edge: {fileID: 7150129798810381736}
+  edgeCollider: {fileID: 96952929601211591}
 --- !u!1 &7475952358438203196
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,10 +61,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5034891049585318874}
   - component: {fileID: 96952929601211591}
-  - component: {fileID: 8894932556853559640}
   m_Layer: 0
   m_Name: PHY
-  m_TagString: Untagged
+  m_TagString: Cable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,25 +124,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &8894932556853559640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7475952358438203196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55b72e17b4a5a2e4db243c7f8f5ccb72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contacts: []
-  targetTags:
-  - Bullet
-  - Enemy
-  tagMode: 2
-  changeLastFrame: 0
-  includeTriggers: 1
 --- !u!1 &7751919577925385299
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +136,7 @@ GameObject:
   - component: {fileID: 7150129798810381736}
   m_Layer: 0
   m_Name: VIS
-  m_TagString: Untagged
+  m_TagString: Cable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

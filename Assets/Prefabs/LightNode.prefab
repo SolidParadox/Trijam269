@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7260889162113089561}
   - component: {fileID: 2924304111330048165}
   - component: {fileID: 475355625219966526}
-  - component: {fileID: 8116967555531990773}
+  - component: {fileID: 6139944102130225923}
   m_Layer: 0
   m_Name: LightNode
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MonoBehaviour:
   radar: {fileID: 1327497420732302653}
   breakAS: {fileID: 2148204004111078765}
   lz: {fileID: 475355625219966526}
-  cable: {fileID: 8116967555531990773}
+  cable: {fileID: 6139944102130225923}
   reqPower: 0
   maxLightPower: 5
   dead:
@@ -121,7 +121,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   mf: {fileID: 7263256337319339229}
   mr: {fileID: 3604242076643087675}
---- !u!114 &8116967555531990773
+--- !u!114 &6139944102130225923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 236011641134986878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d264352c32d6f8468b0cc7ede56f2d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 01361f98282c59b45868b07840dd280f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   linkA: {fileID: 0}

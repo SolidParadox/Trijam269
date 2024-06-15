@@ -6,7 +6,7 @@ public class LightMAN : MonoBehaviour {
 
   public LightZone lz;
 
-  public ENGCable cable;
+  public ENGPDS cable;
   public float reqPower;
   public float maxLightPower;
 
