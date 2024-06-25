@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 236011641134986878}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82,7 +82,7 @@ MonoBehaviour:
   breakAS: {fileID: 2148204004111078765}
   lz: {fileID: 475355625219966526}
   cable: {fileID: 6139944102130225923}
-  reqPower: 0
+  reqPower: 150
   maxLightPower: 5
   dead:
   - {fileID: 6406527123047674293}
@@ -110,15 +110,15 @@ MonoBehaviour:
     useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
+    useNormalAngle: 1
+    useOutsideNormalAngle: 1
     layerMask:
       serializedVersion: 2
       m_Bits: 4294967295
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
-    maxNormalAngle: 0
+    maxNormalAngle: 180
   mf: {fileID: 7263256337319339229}
   mr: {fileID: 3604242076643087675}
 --- !u!114 &6139944102130225923

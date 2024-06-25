@@ -1353,17 +1353,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightNode (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 236011641134986878, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 915212344851661113, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.102
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 915212344851661113, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.45
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 915212344851661113, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1395,30 +1391,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 915212344851661113, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2924304111330048165, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
-      propertyPath: reqPower
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 6862624742580127518, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6862624742580127518, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6862624742580127518, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6862624742580127518, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6862624742580127518, guid: f321413e9eae63542ae411ee267bf36d, type: 3}
-      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1546,7 +1518,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 2.5, y: 0.4}
+  m_Size: {x: 2.5, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2746,7 +2718,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 2.5, y: 0.4}
+  m_Size: {x: 2.5, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
