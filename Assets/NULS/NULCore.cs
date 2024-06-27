@@ -21,9 +21,6 @@ public class NULCore : MonoBehaviour {
   public float strengthDrain;
   public float strengthLFS;  // Light Field sample
 
-  public Transform DEBUGTT;
-  public float DEBUGPOW;
-
   private Texture2D deltaLF;
 
   public Color GetLL ( Vector2 worldPosition ) {
@@ -47,8 +44,6 @@ public class NULCore : MonoBehaviour {
     zdShader.SetVector ( "dimColour", new Vector4 ( deltas.x, deltas.y, deltas.z, 0 ) * strengthDrain * Time.deltaTime );
     zdShader.SetFloat ( "lfPower", Time.deltaTime * strengthLFS );
     zdShader.Dispatch ( 0, lfTexture.width / 8, lfTexture.height / 8, 1 );
-
-    DEBUGTT.localScale = Vector3.one * DEBUGPOW;
   }
 
   private void LateUpdate () {

@@ -20,11 +20,12 @@ public class LightMAN : MonoBehaviour {
       }
       lz.enabled = false;
       enabled = false;
-    }
+    }/*
     if ( reqPower != 0 ) {
       lz.baseLightPower = maxLightPower * Mathf.Clamp01 ( cable.throughput / reqPower );
     } else {
       lz.baseLightPower = maxLightPower;
     }
+    */
   }
 }

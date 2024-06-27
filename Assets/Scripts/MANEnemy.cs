@@ -11,7 +11,7 @@ public class MANEnemy : MANEntity {
 
   public int state;
 
-  public LightSensor lightSensor;
+  public NULSampler lightSensor;
 
   // mapper should be here
   private Vector2 targetHeading;
