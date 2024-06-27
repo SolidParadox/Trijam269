@@ -6,10 +6,11 @@
 RWTexture2D<float4> LFSample;
 RWTexture2D<float4> Result;
 float4 dimColour;
+float lfPower;
 
 [numthreads(8,8,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
-    Result[id.xy] += LFSample[id.xy];
+    Result[id.xy] += float4(LFSample[id.xy].r, LFSample[id.xy].g, LFSample[id.xy].b, 1) * LFSample[id.xy].w * lfPower;
     Result[id.xy] -= dimColour;
 }
