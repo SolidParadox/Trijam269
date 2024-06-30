@@ -40,16 +40,26 @@ public class NULCore : MonoBehaviour {
   void Start () {
     deltaLF = new Texture2D ( lfTexture.width, lfTexture.height, TextureFormat.RGB24, false );
     renderMaterial = new Material ( renderMaterial );
+    GetComponent<MeshRenderer>().material = renderMaterial;
+
+    crt = new CustomRenderTexture ( 160, 90 ) {
+      doubleBuffered = true,
+      material = blendMaterial,
+      updateMode = CustomRenderTextureUpdateMode.OnDemand
+    };
+    blendMaterial.SetTexture ( "_CustomRenderTexture", crt );
     blendMaterial.SetTexture ( "_LFSample", lfTexture );
     crt.Create ();
+    crt.initializationColor = Color.black;
+    crt.Initialize ();
   }
 
   void Update () {
-    blendMaterial.SetVector ( "_DimColor", 1 * new Vector4 ( deltas.x, deltas.y, deltas.z, 1 ) * strengthDrain );
+    //blendMaterial.SetVector ( "_DimColor", 1 * new Vector4 ( deltas.x, deltas.y, deltas.z, 1 ) * strengthDrain );
     blendMaterial.SetFloat ( "_LfPower", 1 * strengthLFS );
 
-    crt.Initialize ();
     crt.Update ();
+    crt.IncrementUpdateCount ();
 
     renderMaterial.SetTexture ( "_LightField", crt );
   }

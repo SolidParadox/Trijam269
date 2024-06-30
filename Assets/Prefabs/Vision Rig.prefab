@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5595002207417042495
 Transform:
   m_ObjectHideFlags: 0
@@ -575,9 +575,9 @@ GameObject:
   - component: {fileID: 8894709194671848469}
   - component: {fileID: 4593102939454862517}
   m_Layer: 10
-  m_Name: Display Texture
+  m_Name: DISPLAY TEXTURE
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -659,13 +659,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lfCamera: {fileID: 3584947076312379692}
-  blendMaterial: {fileID: 2100000, guid: f13dd443abb0b1249a56a03fa69ebb64, type: 2}
+  blendMaterial: {fileID: 2100000, guid: ff686188719f1b74ca55b072d491a4c9, type: 2}
   lfTexture: {fileID: 8400000, guid: 0adfb58c212ab7045a8e64a2c65d5225, type: 2}
   renderMaterial: {fileID: 2100000, guid: b5b9d4cd04cbb4c42bea57a2cb96e379, type: 2}
   crt: {fileID: 8600000, guid: 67cb7b59f3f2959418c67a41c69c69ce, type: 2}
   deltas: {x: 1, y: 1, z: 0.75}
   strengthDrain: 15
-  strengthLFS: 50
+  strengthLFS: 1
 --- !u!1 &7277186917040188955
 GameObject:
   m_ObjectHideFlags: 0
