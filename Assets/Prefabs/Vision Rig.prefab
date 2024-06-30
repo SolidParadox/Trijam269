@@ -662,10 +662,10 @@ MonoBehaviour:
   blendMaterial: {fileID: 2100000, guid: ff686188719f1b74ca55b072d491a4c9, type: 2}
   lfTexture: {fileID: 8400000, guid: 0adfb58c212ab7045a8e64a2c65d5225, type: 2}
   renderMaterial: {fileID: 2100000, guid: b5b9d4cd04cbb4c42bea57a2cb96e379, type: 2}
-  crt: {fileID: 8600000, guid: 67cb7b59f3f2959418c67a41c69c69ce, type: 2}
   deltas: {x: 1, y: 1, z: 0.75}
-  strengthDrain: 15
-  strengthLFS: 1
+  lightDrain: 0
+  lightGain: 0
+  DEBUGFUCKUSHADERS: 0
 --- !u!1 &7277186917040188955
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0

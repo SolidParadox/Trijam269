@@ -17,12 +17,12 @@ public class NULCore : MonoBehaviour {
   public RenderTexture lfTexture;  // Light Field
 
   public Material renderMaterial;
-  public CustomRenderTexture crt;
+  private CustomRenderTexture crt;
 
   public Vector3 deltas;
 
-  public float strengthDrain;
-  public float strengthLFS;  // Light Field sample
+  public float lightDrain;
+  public float lightGain;  // Light Field sample
 
   private Texture2D deltaLF;
 
@@ -42,29 +42,30 @@ public class NULCore : MonoBehaviour {
     renderMaterial = new Material ( renderMaterial );
     GetComponent<MeshRenderer>().material = renderMaterial;
 
-    crt = new CustomRenderTexture ( 160, 90 ) {
+    crt = new CustomRenderTexture ( 160, 90, RenderTextureFormat.ARGB32 ) {
       doubleBuffered = true,
-      material = blendMaterial,
-      updateMode = CustomRenderTextureUpdateMode.OnDemand
+      material = new Material ( blendMaterial ),
+      updateMode = CustomRenderTextureUpdateMode.OnDemand,
+      filterMode = FilterMode.Point
     };
-    blendMaterial.SetTexture ( "_CustomRenderTexture", crt );
-    blendMaterial.SetTexture ( "_LFSample", lfTexture );
+
+    crt.material.SetTexture ( "_lfSample", lfTexture );
     crt.Create ();
     crt.initializationColor = Color.black;
     crt.Initialize ();
   }
 
-  void Update () {
-    //blendMaterial.SetVector ( "_DimColor", 1 * new Vector4 ( deltas.x, deltas.y, deltas.z, 1 ) * strengthDrain );
-    blendMaterial.SetFloat ( "_LfPower", 1 * strengthLFS );
+  public float DEBUGFUCKUSHADERS;
+
+  private void LateUpdate () {
+    crt.material.SetVector ( "_lfDrain", Time.deltaTime * new Vector4 ( deltas.x * lightDrain, deltas.y * lightDrain, deltas.z * lightDrain, 1 ) );
+    crt.material.SetFloat ( "_lfGain", Time.deltaTime * lightGain );
 
     crt.Update ();
     crt.IncrementUpdateCount ();
 
     renderMaterial.SetTexture ( "_LightField", crt );
-  }
 
-  private void LateUpdate () {
     RenderTexture currentActiveRT = RenderTexture.active;
     RenderTexture.active = lfTexture;
 
