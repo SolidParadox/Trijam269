@@ -7,6 +7,8 @@ public class SUPCableLayer : MonoBehaviour {
   public Transform placementAnchor;
   public GameObject stuff;
 
+#if UNITY_EDITOR
+
   private void Update () {
     for ( int i = 0; i < anchors.Length - 1; i++ ) {
       Debug.DrawLine ( anchors[i].position, anchors[i + 1].position, Color.yellow );
@@ -31,4 +33,5 @@ public class SUPCableLayer : MonoBehaviour {
       cableDelta2 = cableDelta;
     }
   }
+#endif
 }

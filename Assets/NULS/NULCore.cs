@@ -12,9 +12,12 @@ public class NULCore : MonoBehaviour {
     }
   }
 
-  public ComputeShader zdShader;
+  public Material blendMaterial;
+
   public RenderTexture lfTexture;  // Light Field
-  public RenderTexture printTexture;
+
+  public Material renderMaterial;
+  public CustomRenderTexture crt;
 
   public Vector3 deltas;
 
@@ -24,26 +27,31 @@ public class NULCore : MonoBehaviour {
   private Texture2D deltaLF;
 
   public Color GetLL ( Vector2 worldPosition ) {
-    Vector3 screenPosition = lfCamera.WorldToScreenPoint(new Vector3(worldPosition.x, worldPosition.y, 0));
-    
-    int x = Mathf.Clamp(Mathf.RoundToInt(screenPosition.x), 0, lfTexture.width - 1);
-    int y = Mathf.Clamp(Mathf.RoundToInt(screenPosition.y), 0, lfTexture.height - 1);
+      Vector3 screenPosition = lfCamera.WorldToScreenPoint(new Vector3(worldPosition.x, worldPosition.y, 0));
 
-    //Debug.Log ( $"Screen position: {screenPosition}, Texture coordinates: ({x}, {y})" );
+      int x = Mathf.Clamp(Mathf.RoundToInt(screenPosition.x), 0, lfTexture.width - 1);
+      int y = Mathf.Clamp(Mathf.RoundToInt(screenPosition.y), 0, lfTexture.height - 1);
 
-    return deltaLF.GetPixel ( x, y );
+      //Debug.Log ( $"Screen position: {screenPosition}, Texture coordinates: ({x}, {y})" );
+
+      return deltaLF.GetPixel ( x, y );
   }
 
   void Start () {
     deltaLF = new Texture2D ( lfTexture.width, lfTexture.height, TextureFormat.RGB24, false );
-    zdShader.SetTexture ( 0, "LFSample", lfTexture );
-    zdShader.SetTexture ( 0, "Result", printTexture );
+    renderMaterial = new Material ( renderMaterial );
+    blendMaterial.SetTexture ( "_LFSample", lfTexture );
+    crt.Create ();
   }
 
   void Update () {
-    zdShader.SetVector ( "dimColour", new Vector4 ( deltas.x, deltas.y, deltas.z, 0 ) * strengthDrain * Time.deltaTime );
-    zdShader.SetFloat ( "lfPower", Time.deltaTime * strengthLFS );
-    zdShader.Dispatch ( 0, lfTexture.width / 8, lfTexture.height / 8, 1 );
+    blendMaterial.SetVector ( "_DimColor", 1 * new Vector4 ( deltas.x, deltas.y, deltas.z, 1 ) * strengthDrain );
+    blendMaterial.SetFloat ( "_LfPower", 1 * strengthLFS );
+
+    crt.Initialize ();
+    crt.Update ();
+
+    renderMaterial.SetTexture ( "_LightField", crt );
   }
 
   private void LateUpdate () {
