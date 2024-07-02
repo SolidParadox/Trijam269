@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5595002207417042495}
   - component: {fileID: 8622210475477762413}
+  - component: {fileID: 2668134076980346088}
   m_Layer: 0
   m_Name: BaseGround
   m_TagString: Untagged
@@ -168,6 +169,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2668134076980346088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079314061502207728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2908bea98a9190f4d9a847acfcf06081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedTransform: {fileID: 223509579554360368}
+  trackedRigidbody: {fileID: 0}
+  linearOffset: {x: 0, y: 0, z: 0}
+  strengthV: 0
+  strengthR: 30
+  strengthLD: 15
+  switchRT: 0
+  teleportRange: 10
 --- !u!1 &2698867091506690407
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +612,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5}
-  m_LocalScale: {x: 28.4575, y: 16, z: 1}
+  m_LocalScale: {x: 32, y: 18, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6310914735358070837}
@@ -662,10 +683,9 @@ MonoBehaviour:
   blendMaterial: {fileID: 2100000, guid: ff686188719f1b74ca55b072d491a4c9, type: 2}
   lfTexture: {fileID: 8400000, guid: 0adfb58c212ab7045a8e64a2c65d5225, type: 2}
   renderMaterial: {fileID: 2100000, guid: b5b9d4cd04cbb4c42bea57a2cb96e379, type: 2}
-  deltas: {x: 1, y: 1, z: 0.75}
-  lightDrain: 0
-  lightGain: 0
-  DEBUGFUCKUSHADERS: 0
+  deltas: {x: 0.5, y: 1, z: 1}
+  lightDrain: 120
+  lightGain: 200
 --- !u!1 &7277186917040188955
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +718,55 @@ Transform:
   - {fileID: 476355338951533007}
   m_Father: {fileID: 6310914735358070837}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7551675561369569193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223509579554360368}
+  - component: {fileID: 5402340183347655423}
+  m_Layer: 0
+  m_Name: MousePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &223509579554360368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551675561369569193}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6310914735358070837}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!114 &5402340183347655423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551675561369569193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a03b01b6c2101041bc7e0803f78e8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1280579543115503602}
+  follower: {fileID: 5595002207417042495}
+  strenght: 0.04
+  rotationDistance: 2000000
+  tracking: 0
 --- !u!1 &8355814464417645164
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,6 +802,7 @@ Transform:
   - {fileID: 6420451191903453699}
   - {fileID: 412133982148188786}
   - {fileID: 5595002207417042495}
+  - {fileID: 223509579554360368}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8382058696751035989
@@ -812,9 +882,9 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 0adfb58c212ab7045a8e64a2c65d5225, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 0
+  m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 0
+  m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0

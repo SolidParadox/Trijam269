@@ -38,7 +38,7 @@ public class NULCore : MonoBehaviour {
   }
 
   void Start () {
-    deltaLF = new Texture2D ( lfTexture.width, lfTexture.height, TextureFormat.RGB24, false );
+    deltaLF = new Texture2D ( lfTexture.width, lfTexture.height, TextureFormat.RGBAFloat, false );
     renderMaterial = new Material ( renderMaterial );
     GetComponent<MeshRenderer>().material = renderMaterial;
 
@@ -49,17 +49,20 @@ public class NULCore : MonoBehaviour {
       filterMode = FilterMode.Point
     };
 
-    crt.material.SetTexture ( "_lfSample", lfTexture );
     crt.Create ();
     crt.initializationColor = Color.black;
     crt.Initialize ();
+    crt.material.SetTexture ( "_lfSample", lfTexture );
   }
 
-  public float DEBUGFUCKUSHADERS;
-
   private void LateUpdate () {
-    crt.material.SetVector ( "_lfDrain", Time.deltaTime * new Vector4 ( deltas.x * lightDrain, deltas.y * lightDrain, deltas.z * lightDrain, 1 ) );
-    crt.material.SetFloat ( "_lfGain", Time.deltaTime * lightGain );
+    float timeswitch = Time.smoothDeltaTime;
+    if ( crt.material == null ) {
+      crt.material = new Material ( blendMaterial );
+      crt.material.SetTexture ( "_lfSample", lfTexture );
+    }
+    crt.material.SetVector ( "_lfDrain", timeswitch * new Vector4 ( deltas.x * lightDrain, deltas.y * lightDrain, deltas.z * lightDrain, 1 ) );
+    crt.material.SetFloat ( "_lfGain", timeswitch * lightGain );
 
     crt.Update ();
     crt.IncrementUpdateCount ();
@@ -78,6 +81,9 @@ public class NULCore : MonoBehaviour {
   private void OnDestroy () {
     if ( deltaLF != null ) {
       Destroy ( deltaLF );
+    }
+    if ( crt != null ) {
+      crt.Release ();
     }
   }
 }

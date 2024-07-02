@@ -4,6 +4,8 @@ using System.Collections.Generic;
 public class LightZone : MonoBehaviour {
   public RRays rays;
 
+  public float penetrationRange = 0.1f;
+
   public MeshFilter mf;
   public MeshRenderer mr;
   private Mesh mesh;
@@ -35,9 +37,9 @@ public class LightZone : MonoBehaviour {
 
     for ( int i = 0; i < rays.rayCount; i++ ) {
       Debug.DrawLine ( transform.position, rays.points[i] );
-      vertices[vertexIndex] = transform.InverseTransformDirection ( rays.points[i] - (Vector2)( transform.position ) );
+      vertices[vertexIndex] = transform.InverseTransformDirection ( rays.points[i] );
       //uv[vertexIndex] = new Vector2 ( ( vertexIndex - 1 ) / (float)rays, fpd / distance );
-      uv[vertexIndex] = Vector2.one * rays.GetDistance( i );
+      uv[vertexIndex] = Vector2.one * ( rays.GetDistance( i ) + penetrationRange );
       if ( vertexIndex >= 2 ) {
         triangles[( vertexIndex - 2 ) * 3] = 0;
         triangles[( vertexIndex - 2 ) * 3 + 1] = vertexIndex;

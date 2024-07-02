@@ -30,12 +30,7 @@ Shader "CustomRenderTexture/FUCKWEEEEEEEB"
                 float4 src = tex2D(_SelfTexture2D, IN.localTexcoord.xy );
                 float4 lfSampleColor = tex2D(_lfSample, IN.localTexcoord.xy);
                 
-                lfSampleColor *= _lfGain; 
-                lfSampleColor -= _lfDrain;
-                
-                float4 finalColor = src + lfSampleColor;
-
-                return finalColor;
+                return src + lfSampleColor * _lfGain - _lfDrain;
             } 
             ENDCG
         }
