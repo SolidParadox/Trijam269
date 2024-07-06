@@ -567,12 +567,32 @@ PrefabInstance:
       value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4593102939454862517, guid: 27ebd804b698fc84cbdbf2e8d9077b18, type: 3}
+      propertyPath: lightGain
+      value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593102939454862517, guid: 27ebd804b698fc84cbdbf2e8d9077b18, type: 3}
       propertyPath: lightDrain
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4593102939454862517, guid: 27ebd804b698fc84cbdbf2e8d9077b18, type: 3}
       propertyPath: strengthLFS
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593102939454862517, guid: 27ebd804b698fc84cbdbf2e8d9077b18, type: 3}
+      propertyPath: lightDrain.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593102939454862517, guid: 27ebd804b698fc84cbdbf2e8d9077b18, type: 3}
+      propertyPath: lightDrain.b
+      value: 0.7018695
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593102939454862517, guid: 27ebd804b698fc84cbdbf2e8d9077b18, type: 3}
+      propertyPath: lightDrain.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593102939454862517, guid: 27ebd804b698fc84cbdbf2e8d9077b18, type: 3}
+      propertyPath: lightDrain.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4593102939454862517, guid: 27ebd804b698fc84cbdbf2e8d9077b18, type: 3}
       propertyPath: strengthDrain

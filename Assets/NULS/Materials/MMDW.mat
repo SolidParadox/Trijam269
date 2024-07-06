@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MMDW
-  m_Shader: {fileID: 4800000, guid: 0ea1161487d9a6d44b4b91ecca337bcb, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 8590bb5d3bd77d2488567828f0cf77e8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,7 +23,15 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _:
+        m_Texture: {fileID: 8400000, guid: 0adfb58c212ab7045a8e64a2c65d5225, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LFSample:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -46,9 +54,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _LfPower: 1
+    - _lfAlphaMagic: 1
     - _lfGain: 10
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DIM: {r: 1, g: 0, b: 0, a: 0}
+    - _DimColor: {r: 0, g: 0, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _lfDrain: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0.3529412}
