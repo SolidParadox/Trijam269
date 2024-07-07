@@ -36,7 +36,7 @@ public class LightZone : MonoBehaviour {
     List<Collider2D> touched = new List<Collider2D> ();
 
     for ( int i = 0; i < rays.rayCount; i++ ) {
-      Debug.DrawLine ( Vector3.zero, rays.points[i] );
+      //Debug.DrawLine ( Vector3.zero, rays.points[i] );
       uv[vertexIndex] = new Vector2 ( 0.5f, 0.5f ) + 0.5f * rays.points[i] / ( rays.distance + penetrationRange );
       Vector2 transformedPoint = transform.InverseTransformDirection ( rays.points[i] + rays.points[i].normalized * penetrationRange );
       vertices[vertexIndex] = transformedPoint;
