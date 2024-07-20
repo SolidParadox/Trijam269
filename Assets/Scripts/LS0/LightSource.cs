@@ -5,8 +5,6 @@ public class LightSource : MonoBehaviour {
   public RRays rays;
   public float power = 1;
 
-  private LightSensor ls;
-
   public MeshFilter mf;
   private Mesh mesh;
 
@@ -21,13 +19,6 @@ public class LightSource : MonoBehaviour {
   }
 
   void LateUpdate () {
-    for ( int i = 0; i < directLightRadar.contacts.Count; i++ ) {
-      float relativePower = 1 - ( transform.position - directLightRadar.contacts[i].transform.position ).sqrMagnitude / ( rays.distance * rays.distance );
-      if ( directLightRadar.contacts[i].TryGetComponent ( out ls ) ) {
-        ls.InLightPing ( relativePower * power * Time.deltaTime );
-      }
-    }
-
     rays.WorkFunction ();
 
     vertices = new Vector3[rays.rayCount + 1];
