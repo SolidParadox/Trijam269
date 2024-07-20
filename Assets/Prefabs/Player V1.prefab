@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2944623113432578328}
   m_Layer: 6
   m_Name: Player V1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7761496565804962743}
   - component: {fileID: 7648642170757503768}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LR1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5306102066459826048}
   - component: {fileID: 7431560135564722309}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
