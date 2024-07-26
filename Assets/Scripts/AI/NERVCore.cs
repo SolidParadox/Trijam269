@@ -31,7 +31,6 @@ public class NERVCore : MonoBehaviour {
 
   private void FixedUpdate () {
     statusAnimator.SetBool ( "InLight", lightSampler.inLight );
-    statusAnimator.SetInteger ( "Status", (int) state );
 
     if ( !lightSampler.inLight ) {
       if ( state == StateMachine.Dormant ) {
@@ -56,7 +55,12 @@ public class NERVCore : MonoBehaviour {
     switch ( state ) {
       case StateMachine.Feral:
         cHeading = traceSampler.currentHeading - powerTrain.rgb.position;
-        powerTrain.rgb.rotation = Vector2.SignedAngle ( Vector2.up, cHeading - powerTrain.rgb.position );
+
+        powerTrain.rgb.angularVelocity = 0;
+        Debug.Log ( Vector2.SignedAngle ( Vector2.up, cHeading ) );
+        powerTrain.rgb.rotation = Vector2.SignedAngle ( Vector2.up, cHeading );
+        Debug.DrawLine ( powerTrain.rgb.position, cHeading, Color.gray );
+        cHeading.Normalize ();
 
         state = StateMachine.Attacking;
 
@@ -71,6 +75,8 @@ public class NERVCore : MonoBehaviour {
         break;
       case StateMachine.Stunned:
         deltaStun -= Time.fixedDeltaTime;
+        powerTrain.rgb.angularVelocity = 0;
+        powerTrain.SetThrusterOutput ( -powerTrain.rgb.transform.up * 0.1f );
         if ( deltaStun <= 0 ) {
           state = StateMachine.Feral;
         }
@@ -78,5 +84,7 @@ public class NERVCore : MonoBehaviour {
       default:
         break;
     }
+
+    statusAnimator.SetInteger ( "Status", (int) state );
   }
 }
