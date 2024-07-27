@@ -9,6 +9,9 @@ public class NERVCore : MonoBehaviour {
   public RadarCore collisionRadar;
   public Mika powerTrain;
 
+  public RRays lineRadar;
+  public LineRenderer line;
+
   public Vector2    cHeading;
 
   private float internalDuration = 1, deltaStun;
@@ -47,6 +50,9 @@ public class NERVCore : MonoBehaviour {
           powerTrain.strengthD = 0.01f;
           powerTrain.strengthDOS = 0.01f;
 
+          line.SetPosition ( 0, Vector2.zero );
+          line.SetPosition ( 1, Vector2.zero );
+
           state = StateMachine.Dead;
           enabled = false;
         }
@@ -57,13 +63,10 @@ public class NERVCore : MonoBehaviour {
         cHeading = traceSampler.currentHeading - powerTrain.rgb.position;
 
         powerTrain.rgb.angularVelocity = 0;
-        Debug.Log ( Vector2.SignedAngle ( Vector2.up, cHeading ) );
         powerTrain.rgb.rotation = Vector2.SignedAngle ( Vector2.up, cHeading );
-        Debug.DrawLine ( powerTrain.rgb.position, cHeading, Color.gray );
         cHeading.Normalize ();
 
         state = StateMachine.Attacking;
-
         break;
       case StateMachine.Attacking:
         powerTrain.SetThrusterOutput ( cHeading );
@@ -72,6 +75,12 @@ public class NERVCore : MonoBehaviour {
           state = StateMachine.Stunned;
           deltaStun = paramStunDuration;
         }
+
+        lineRadar.WorkFunction ();
+        line.SetPosition ( 1, (Vector2)powerTrain.rgb.position );
+        line.SetPosition ( 0, powerTrain.rgb.position + lineRadar.points[0] );
+        Debug.DrawLine ( powerTrain.rgb.position, powerTrain.rgb.position + lineRadar.points[0], Color.blue );  
+
         break;
       case StateMachine.Stunned:
         deltaStun -= Time.fixedDeltaTime;
@@ -80,6 +89,8 @@ public class NERVCore : MonoBehaviour {
         if ( deltaStun <= 0 ) {
           state = StateMachine.Feral;
         }
+        line.SetPosition ( 0, Vector2.zero );
+        line.SetPosition ( 1, Vector2.zero );
         break;
       default:
         break;
