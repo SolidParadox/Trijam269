@@ -10,6 +10,7 @@ public class TRCNode : MonoBehaviour {
     if ( radar.contacts.Count > 0 ) {
       RaycastHit2D rc = new RaycastHit2D();
       // DEFAULT layer only layer mask
+      // Checks for walls 
       Vector2 rayHeading = radar.contacts[ 0 ].transform.position - transform.position;
       rc = Physics2D.Raycast ( transform.position, rayHeading, rayHeading.magnitude, 1 );
       if ( rc.collider == null ) {
