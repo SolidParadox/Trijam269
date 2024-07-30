@@ -15,7 +15,7 @@ public class PUCKTerminal : MonoBehaviour {
   private void Update () {
     if ( Input.GetKeyDown( KeyCode.R ) ) {
       puck.powerTrain.rgb.position = transform.position;
-      puck.powerTrain.rgb.rotation = 0;
+      //puck.powerTrain.rgb.rotation = 0;
 
       puck.powerTrain.rgb.velocity = Vector2.zero;
       puck.powerTrain.rgb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -28,6 +28,7 @@ public class PUCKTerminal : MonoBehaviour {
     if ( timerSpawn > 0 ) {
       timerSpawn -= Time.deltaTime;
       if ( timerSpawn <= 0 ) {
+        puck.StartStun ();
         puck.powerTrain.rgb.constraints = RigidbodyConstraints2D.None;
 
         puck.powerTrain.rgb.velocity = transform.up * launchVelocity;
@@ -35,6 +36,7 @@ public class PUCKTerminal : MonoBehaviour {
 
         puck.powerTrain.enabled = true;
         puck.flashlight.enabled = true;
+        puck.powerTrain.SetThrusterOutput ( Vector2.zero );
 
         timerSpawn = 0;
       }

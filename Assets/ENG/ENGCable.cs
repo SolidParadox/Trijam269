@@ -28,7 +28,7 @@ public class ENGCable : ENGPDS {
 
   private void Update () {
     if ( edge != null ) {
-      edge.material.SetVector ( "_OFS", flowDirection * matpos * -0.001f );
+      edge.material.SetVector ( "_OFS", flowDirection * matpos * -0.0005f );
     }
     matpos += throughput * Time.deltaTime;
   }
