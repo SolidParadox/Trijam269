@@ -25,6 +25,8 @@ public class PUCK : MonoBehaviour {
   private float deltaAT = 0;
   private float pastSpeed; // Saved past speed of rgb to detect fast decelerations
 
+  public bool isStunned{ get { return stunTimer > 0; } }
+
   // PUBLIC METHODS
 
   public void StartStun () {

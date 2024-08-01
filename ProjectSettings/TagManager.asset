@@ -9,6 +9,7 @@ TagManager:
   - Transparent
   - Cable
   - Trace
+  - EQ
   layers:
   - Default
   - TransparentFX
