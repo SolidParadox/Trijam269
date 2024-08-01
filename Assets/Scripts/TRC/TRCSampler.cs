@@ -6,11 +6,16 @@ public class TRCSampler : MonoBehaviour {
 
   private void FixedUpdate () {
     if ( radar.contacts.Count > 0 ) {
-      Vector2 delta = Vector2.zero;
+      Vector2 delta = Random.insideUnitCircle.normalized;
       for ( int i = 0; i < radar.contacts.Count; i++ ) { 
-        delta += radar.contacts[i].GetComponent<TRCNode> ().GetLastTrace ();
+        try {
+          if ( radar.contacts[i].GetComponent<TRCNode> ().touched ) { }
+          delta += radar.contacts[i].GetComponent<TRCNode> ().GetLastTrace ();
+          break;
+        } catch {
+
+        }
       }
-      delta /= radar.contacts.Count;
       currentHeading = delta; 
     }
     Debug.DrawLine ( transform.position, (Vector3)currentHeading, Color.red );

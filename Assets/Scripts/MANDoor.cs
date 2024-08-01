@@ -13,8 +13,8 @@ public class MANDoor : MonoBehaviour {
   public Collider2D col;
 
   private void Recheck () {
-    SceneCore.Instance.nav.gates[gateID].closed = !currentStatus;
-    SceneCore.Instance.nav.GenerateNodes ();
+    //SceneCore.Instance.nav.gates[gateID].closed = !currentStatus;
+    //SceneCore.Instance.nav.GenerateNodes ();
     animator.SetBool ( "DoorOpen", currentStatus );
   }
 

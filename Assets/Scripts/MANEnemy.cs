@@ -3,22 +3,22 @@ using UnityEngine;
 public class MANEnemy : MANEntity {
   public float lightHP;
   private float originalHP;
-  public float shadowDPS;
-
+ 
   public float wakeupDuration;
   public float stunDuration;
+
   private float deltaT = 0;
 
   public int state;
 
   public NULSampler lightSensor;
+  public TRCSampler traceSensor;
 
-  // mapper should be here
   private Vector2 targetHeading;
 
   public RadarCore radar;
 
-  public GameObject s1, s2;
+  public GameObject s1, s2; 
 
   public AudioSource slamAS;
 
@@ -54,16 +54,18 @@ public class MANEnemy : MANEntity {
   }
 
   void Update () {
+    // Petrified, in the dark
     if ( state == 0 && !lightSensor.inLight ) {
       deltaT = wakeupDuration;
       state = 1;
     }
 
+    // Petrified, in the light
     if ( state == 1 && lightSensor.inLight ) {
       state = 0;
     }
 
-    Debug.DrawLine ( mika.rgb.position, mika.rgb.position + targetHeading * 10, Color.magenta );
+    // Feral, chosing dash direction
     if ( state == 2 ) {
       mika.SetThrusterOutput ( targetHeading );
       if ( radar.breached ) {
@@ -73,6 +75,8 @@ public class MANEnemy : MANEntity {
         deltaT = stunDuration;
       }
     }
+
+    // Feral, dashing
     if ( state == 3 ) {
       if ( radar.breached ) {
         mika.SetThrusterOutput ( targetHeading );
@@ -81,14 +85,16 @@ public class MANEnemy : MANEntity {
       }
     }
 
+    // Feral, in the dark damage
     if ( !lightSensor.inLight && state >= 2 ) {
-      lightHP -= shadowDPS * Time.deltaTime;
+      lightHP -= Time.deltaTime;
       if ( lightHP <= 0 ) {
         SceneCore.Instance.EnemyFeralDeath ( this );
         Destroy ( gameObject );
       }
     }
 
+    // Timer expired, stone -> feral || feral -> feral + damage
     if ( deltaT > 0 ) {
       deltaT -= Time.deltaTime;
       if ( deltaT < 0 ) {

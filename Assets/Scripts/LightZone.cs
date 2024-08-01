@@ -14,6 +14,8 @@ public class LightZone : MonoBehaviour {
   private int[] triangles;
   private int vertexIndex = 0;
 
+  public Color spectrum = Color.white;
+
   private void Start () {
     mesh = new Mesh ();
     mf.mesh = mesh;
@@ -26,7 +28,7 @@ public class LightZone : MonoBehaviour {
   void FixedUpdate () {
     rays.WorkFunction ();
 
-    mr.material.SetFloat ( "_SM", 1 );
+    mr.material.SetColor ( "_Spectrum", spectrum );
 
     vertices[0] = Vector3.zero;
     Vector2[] uv = new Vector2[rays.rayCount + 1];
@@ -58,5 +60,9 @@ public class LightZone : MonoBehaviour {
     // Recalculate normals and bounds
     mesh.RecalculateNormals ();
     mesh.RecalculateBounds ();
+  }
+
+  private void OnDisable () {
+    mr.material.SetColor ( "_Spectrum", Color.black );
   }
 }
