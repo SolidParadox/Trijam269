@@ -65,6 +65,7 @@ public class EQBase : MonoBehaviour {
     enabled = false;
 
     transform.SetParent ( originalParent );
+    transform.position += transform.up * 2;
 
     rgb.velocity = transform.up * 10;
     rgb.angularVelocity = 15;

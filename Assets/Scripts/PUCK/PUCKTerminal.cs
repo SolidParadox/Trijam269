@@ -14,6 +14,7 @@ public class PUCKTerminal : MonoBehaviour {
 
   private void Update () {
     if ( Input.GetKeyDown( KeyCode.R ) ) {
+      puck.StartStun ();
       puck.powerTrain.rgb.position = transform.position;
       //puck.powerTrain.rgb.rotation = 0;
 

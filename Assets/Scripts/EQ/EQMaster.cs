@@ -9,7 +9,6 @@ public class EQMaster : MonoBehaviour {
     if ( pickupRadar.breached && currentEquipment == null && Input.GetKey ( KeyCode.E ) ) {
       currentEquipment = pickupRadar.contacts[0].GetComponent<EQBase> ();
       currentEquipment.Attach ( transform.GetChild ( 0 ) );  
-      currentEquipment.transform.SetParent ( transform );
     }
     if ( Input.GetKey ( KeyCode.G ) && currentEquipment != null ) {
       currentEquipment.Detach ();
